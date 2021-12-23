@@ -1,5 +1,11 @@
 # Changelog
 
+### 1.0.3 (2021-12-23)
+
+Fixes:
+
+-   fix: typo in query
+
 ### 1.0.2 (2021-12-23)
 
 Fixes:
