@@ -1,0 +1,7 @@
+default_version = '1.0.0'
+comment = 'Backend locks'
+requires = ''
+superuser = false
+# trusted = false
+module_pathname = ''
+relocatable = true
