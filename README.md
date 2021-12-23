@@ -1,14 +1,16 @@
-# Install / update / drop
+# PostgreSQL backend locks
+
+## Install / update / drop
 
 ```
-CREATE EXTENSION "softvisio" CASCADE;
+CREATE EXTENSION softvisio_locks;
 
-ALTER EXTENSION "softvisio" UPDATE;
+ALTER EXTENSION softvisio_locks UPDATE;
 
-DROP EXTENSION IF EXISTS "softvisio";
+DROP EXTENSION IF EXISTS softvisio_locks;
 ```
 
-# Build
+## Build
 
 ```
 export PATH=/usr/pgsql-13/bin:$PATH
@@ -16,22 +18,25 @@ export PATH=/usr/pgsql-13/bin:$PATH
 gmake USE_PGXS=1 install
 ```
 
-# Procedures
+## Funcitions
 
-## `create_database( <database_name>, [\<collate>] )`
+### `pg_backend_id( pid? )`
 
-Default `collate` is `'C.UTF-8'`.
-
-Example:
-
-```
-CALL create_database( 'test', 'ru_UA.UTF-8' );
-```
-
-## `update_extensions()`
+-   `pid?` <int4\> Backand pid.
+-   Returns: <int8\> | <null\> Backend `id`. If `pid` is not provided, returns `id` for the current backend. Returns <null\> if backend with the given `pid` is not active.
 
 Example:
 
+```sql
+SELECT pg_backend_id();
+
+SELECT pg_backend_id( 1234 );
 ```
-CALL update_extensions();
+
+### pg_active_backend
+
+`pg_active_backend` view contains ids of the active backends, connected to the current database. Can be used to check if backend with the given id is currently active.
+
+```sql
+SELECT EXISTS ( SELECT FROM pg_active_backend WHERE id = pg_backend_id() );
 ```
