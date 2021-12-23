@@ -13,8 +13,6 @@ DROP EXTENSION IF EXISTS softvisio_locks;
 ## Build
 
 ```
-export PATH=/usr/pgsql-13/bin:$PATH
-
 gmake USE_PGXS=1 install
 ```
 
