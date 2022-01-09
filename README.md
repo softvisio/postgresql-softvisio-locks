@@ -3,7 +3,7 @@
 ## Install / update / drop
 
 ```
-CREATE EXTENSION softvisio_locks;
+CREATE EXTENSION IF NOT EXISTS softvisio_locks;
 
 ALTER EXTENSION softvisio_locks UPDATE;
 
