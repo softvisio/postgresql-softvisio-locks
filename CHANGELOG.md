@@ -1,5 +1,11 @@
 # Changelog
 
+### 1.1.0 (2022-01-09)
+
+Features:
+
+-   feat: readme
+
 ### 1.0.3 (2021-12-23)
 
 Fixes:
